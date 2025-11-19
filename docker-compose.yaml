@@ -1,0 +1,20 @@
+services:
+  cxc_ws:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cxc_ws:latest
+    container_name: cxc_ws
+    ports:
+      - "9515:9515"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:9515
+    restart: always
+    networks:
+      - internal_net
+
+networks:
+  internal_net:
+    driver: bridge
+
